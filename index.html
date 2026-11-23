@@ -501,6 +501,7 @@ nav {
   animation: floatSlow 4s ease-in-out infinite;
 }
 
+.shield-icon-box { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .hero-floating-card i {
   font-size: 28px;
   color: var(--gold-light);
@@ -1442,12 +1443,13 @@ footer {
 }
 
 /* RESPONSIVE DESIGN */
+/* ENHANCED RESPONSIVE DESIGN - PERFECT MOBILE ALIGNMENT */
 @media (max-width: 1080px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-visual { max-width: 600px; margin: 0 auto; }
+  .hero-visual { max-width: 600px; margin: 0 auto; width: 100%; }
   .pillars-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: 1fr; }
-  .about-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .antiques-grid { grid-template-columns: repeat(2, 1fr); }
   .claims-grid-steps { grid-template-columns: repeat(3, 1fr); }
   .reach-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1456,20 +1458,484 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .nav-links, .nav-cta { display: none; }
-  .mobile-toggle { display: block; }
-  .pillars-bar { margin-top: 0; }
-  .pillars-grid { grid-template-columns: 1fr; }
-  .antiques-grid { grid-template-columns: 1fr; }
-  .claims-grid-steps { grid-template-columns: 1fr; }
-  .policy-principles { grid-template-columns: 1fr; }
-  .vm-grid { grid-template-columns: 1fr; }
-  .reach-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  section { padding: 70px 0; }
-  .hero { padding: 50px 0 80px; }
-  .claims-card-large { padding: 30px 20px; }
-  .contact-info-panel, .contact-form-panel { padding: 36px 20px; }
+  /* CONTAINER & PADDING */
+  .wrap {
+    padding: 0 18px;
+  }
+  
+  section {
+    padding: 60px 0;
+  }
+
+  /* TOP BAR ALIGNMENT */
+  .top-bar {
+    font-size: 12px;
+  }
+  .top-bar .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .top-links {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+
+  /* NAVBAR & BRANDING */
+  nav {
+    min-height: 68px;
+  }
+  .brand {
+    gap: 10px;
+  }
+  .brand-logo-card {
+    padding: 4px 8px;
+  }
+  .brand-logo-card img {
+    height: 34px;
+  }
+  .brand-text b {
+    font-size: 16px;
+  }
+  .brand-text span {
+    font-size: 10px;
+  }
+  .nav-links, .nav-cta {
+    display: none;
+  }
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-light);
+  }
+
+  /* HERO SECTION ALIGNMENT */
+  .hero {
+    padding: 40px 0 60px;
+  }
+  .hero-content {
+    text-align: left;
+  }
+  .hero-badge {
+    padding: 6px 14px;
+    margin-bottom: 18px;
+  }
+  .badge-text {
+    font-size: 11px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    line-height: 1.18;
+    margin-bottom: 16px;
+  }
+  .hero-desc {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-bottom: 26px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 34px;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 15px;
+  }
+  .hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding-top: 20px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 26px;
+  }
+  .stat-label {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  /* HERO VISUAL & FLOATING ELEMENTS - CLEAN STACKED MOBILE ALIGNMENT */
+  .hero-visual {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-top: 24px !important;
+    padding: 0 !important;
+    position: relative !important;
+  }
+  .hero-image-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: var(--radius-md) !important;
+    margin: 0 !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+  }
+  .hero-image-frame img {
+    width: 100% !important;
+    height: 260px !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+  .hero-overlay-tag {
+    top: 14px !important;
+    left: 14px !important;
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+  }
+  .hero-floating-card {
+    position: static !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin: 16px 0 0 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    animation: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 16px !important;
+    padding: 16px 20px !important;
+    border-radius: var(--radius-md) !important;
+    background: rgba(15, 28, 53, 0.95) !important;
+    border: 1px solid var(--border-light) !important;
+    border-left: 4px solid var(--gold-light) !important;
+  }
+  .hero-floating-card i {
+    font-size: 26px !important;
+    min-width: 28px !important;
+    text-align: center !important;
+    color: var(--gold-light) !important;
+  }
+  .floating-card-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-bottom: 2px !important;
+  }
+  .floating-card-sub {
+    font-size: 12.5px !important;
+    color: var(--text-muted) !important;
+  }
+
+  /* 4 CORE PILLARS */
+  .pillars-bar {
+    margin-top: 10px;
+    padding-bottom: 20px;
+  }
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .pillar-card {
+    padding: 20px 18px;
+  }
+
+  /* HEADINGS & TAGS */
+  .section-head {
+    margin-bottom: 36px;
+    text-align: left;
+  }
+  .section-head h2 {
+    font-size: 26px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .section-head p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* SERVICES & BUSINESS CARDS */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .service-thumb {
+    height: 190px;
+  }
+  .service-body {
+    padding: 22px 18px;
+  }
+  .service-body h3 {
+    font-size: 18px;
+  }
+  .service-body p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  /* ABOUT SECTION */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .about-main-img {
+    height: 260px;
+    border-radius: var(--radius-md);
+  }
+  .about-floating-stat {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 18px;
+  }
+  .about-content h2 {
+    font-size: 25px;
+  }
+  .about-lead {
+    font-size: 16px;
+  }
+  .about-content p {
+    font-size: 14.5px;
+  }
+  .about-content .btn {
+    width: 100%;
+  }
+
+  /* INFO STRIP */
+  .info-strip {
+    padding: 40px 0;
+  }
+  .info-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .info-box {
+    padding: 18px;
+  }
+
+  /* ANTIQUES VAULT */
+  .antiques-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .antique-img-box {
+    height: 220px;
+  }
+  .antique-info {
+    padding: 16px;
+  }
+
+  /* CLAIMS POLICY & ROADMAP */
+  .claims-card-large {
+    padding: 24px 18px;
+    border-radius: var(--radius-md);
+  }
+  .claims-card-large h3 {
+    font-size: 20px !important;
+  }
+  .claims-grid-steps {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .step-card {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 20px 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .step-number {
+    margin: 0 auto 6px auto !important;
+    flex-shrink: 0 !important;
+  }
+  .policy-principles {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 24px;
+  }
+
+  /* REGIONAL PRESENCE (OPERATIONS) */
+  .reach-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+  .reach-card {
+    padding: 24px 20px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .reach-icon {
+    margin: 0 auto 6px auto !important;
+    width: 54px !important;
+    height: 54px !important;
+    font-size: 22px !important;
+    flex-shrink: 0 !important;
+  }
+  .reach-card h3 {
+    font-size: 19px !important;
+    margin-bottom: 6px !important;
+  }
+  .reach-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* TEAMS & METALLURGISTS - PERFECT CENTERED AND WRAPPED MOBILE ALIGNMENT */
+  .team-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+  .team-card {
+    padding: 24px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .avatar-circle {
+    margin: 0 auto 6px auto !important;
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 22px !important;
+    flex-shrink: 0 !important;
+  }
+  .team-info-wrap {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .team-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 4px !important;
+    color: #fff !important;
+    word-break: break-word !important;
+  }
+  .team-role {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: var(--primary-light) !important;
+    margin-bottom: 4px !important;
+  }
+  .team-dept {
+    font-size: 13px !important;
+    color: var(--text-muted) !important;
+    line-height: 1.4 !important;
+    max-width: 90% !important;
+  }
+
+  /* VISION & MISSION */
+  .vm-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .vm-card {
+    padding: 26px 20px;
+    border-radius: var(--radius-md);
+  }
+  .vm-card h3 {
+    font-size: 21px;
+  }
+  .vm-lead {
+    font-size: 15px;
+  }
+
+  /* CONTACT FORM & PANELS */
+  .contact-card-wrap {
+    grid-template-columns: 1fr;
+    border-radius: var(--radius-md);
+  }
+  .contact-info-panel, .contact-form-panel {
+    padding: 28px 18px;
+  }
+  .contact-info-panel h3 {
+    font-size: 22px;
+  }
+  .contact-form-panel h3 {
+    font-size: 20px;
+  }
+  .c-item {
+    gap: 14px;
+  }
+  .c-item-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  .c-item span, .c-item a {
+    font-size: 14px;
+    word-break: break-word;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 50px 0 25px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .footer-bottom div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+/* SMALL PHONES (iPhone SE, Galaxy A-series etc.) */
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+  }
+  .hero-highlights {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    text-align: left;
+  }
+  .stat-item {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .stat-num {
+    font-size: 24px;
+  }
 }
 </style>
 </head>
@@ -1580,7 +2046,7 @@ footer {
             </div>
           </div>
           <div class="hero-floating-card">
-            <i class="fa-solid fa-shield-halved"></i>
+            <span class="shield-icon-box"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
             <div>
               <div class="floating-card-title">Global Governance</div>
               <div class="floating-card-sub">Ethical & Transparent Standards</div>
@@ -1909,27 +2375,35 @@ footer {
       <div class="team-grid">
         <div class="team-card reveal">
           <div class="avatar-circle">KG</div>
-          <h3>Mr. K. P. Ganesh</h3>
-          <div class="team-role">Sr. Metallurgist</div>
-          <div class="team-dept">South India Operations</div>
+          <div class="team-info-wrap">
+            <h3>Mr. K. P. Ganesh</h3>
+            <div class="team-role">Sr. Metallurgist</div>
+            <div class="team-dept">South India Operations</div>
+          </div>
         </div>
         <div class="team-card reveal">
           <div class="avatar-circle">BK</div>
-          <h3>Mr. B. G. Kishor</h3>
-          <div class="team-role">Sr. Metallurgist</div>
-          <div class="team-dept">North Operations</div>
+          <div class="team-info-wrap">
+            <h3>Mr. B. G. Kishor</h3>
+            <div class="team-role">Sr. Metallurgist</div>
+            <div class="team-dept">North Operations</div>
+          </div>
         </div>
         <div class="team-card reveal">
           <div class="avatar-circle">VK</div>
-          <h3>Mr. V. S. Kumar</h3>
-          <div class="team-role">Sr. Metallurgist</div>
-          <div class="team-dept">East Operations</div>
+          <div class="team-info-wrap">
+            <h3>Mr. V. S. Kumar</h3>
+            <div class="team-role">Sr. Metallurgist</div>
+            <div class="team-dept">East Operations</div>
+          </div>
         </div>
         <div class="team-card reveal">
           <div class="avatar-circle">MP</div>
-          <h3>Mr. Mukesh Patro</h3>
-          <div class="team-role">Sr. Metallurgist</div>
-          <div class="team-dept">West Operations</div>
+          <div class="team-info-wrap">
+            <h3>Mr. Mukesh Patro</h3>
+            <div class="team-role">Sr. Metallurgist</div>
+            <div class="team-dept">West Operations</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1984,33 +2458,43 @@ footer {
       <div class="team-grid">
         <div class="team-card reveal">
           <div class="avatar-circle">MS</div>
-          <h3>Mr. M. SuryaKiran</h3>
-          <div class="team-role">Honorable Chairman</div>
-          <div class="team-dept">Strategic Governance & Policy</div>
+          <div class="team-info-wrap">
+            <h3>Mr. M. SuryaKiran</h3>
+            <div class="team-role">Honorable Chairman</div>
+            <div class="team-dept">Strategic Governance & Policy</div>
+          </div>
         </div>
         <div class="team-card reveal">
           <div class="avatar-circle">PC</div>
-          <h3>Mr. P. Chiranjeevi</h3>
-          <div class="team-role">CEO & Managing Director</div>
-          <div class="team-dept">Executive Operations & Expansion</div>
+          <div class="team-info-wrap">
+            <h3>Mr. P. Chiranjeevi</h3>
+            <div class="team-role">CEO & Managing Director</div>
+            <div class="team-dept">Executive Operations & Expansion</div>
+          </div>
         </div>
         <div class="team-card reveal">
           <div class="avatar-circle">VS</div>
-          <h3>Mr. V. Swaminarayanan</h3>
-          <div class="team-role">General Manager</div>
-          <div class="team-dept">Corporate Affairs & Logistics</div>
+          <div class="team-info-wrap">
+            <h3>Mr. V. Swaminarayanan</h3>
+            <div class="team-role">General Manager</div>
+            <div class="team-dept">Corporate Affairs & Logistics</div>
+          </div>
         </div>
         <div class="team-card reveal">
           <div class="avatar-circle">MS</div>
-          <h3>Mr. M. Subramanyam</h3>
-          <div class="team-role">Finance Manager</div>
-          <div class="team-dept">Treasury, Audit & Compliance</div>
+          <div class="team-info-wrap">
+            <h3>Mr. M. Subramanyam</h3>
+            <div class="team-role">Finance Manager</div>
+            <div class="team-dept">Treasury, Audit & Compliance</div>
+          </div>
         </div>
         <div class="team-card reveal">
           <div class="avatar-circle">MR</div>
-          <h3>Mr. M. Ravikanth</h3>
-          <div class="team-role">Operations Manager</div>
-          <div class="team-dept">Field Metallurgy & Plant Execution</div>
+          <div class="team-info-wrap">
+            <h3>Mr. M. Ravikanth</h3>
+            <div class="team-role">Operations Manager</div>
+            <div class="team-dept">Field Metallurgy & Plant Execution</div>
+          </div>
         </div>
       </div>
     </div>
