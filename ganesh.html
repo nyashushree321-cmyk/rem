@@ -54,6 +54,50 @@ body {
 .btn-primary { background: linear-gradient(135deg, #2563eb, #0284c7); color: #fff; }
 .btn-secondary { background: rgba(255, 255, 255, 0.08); color: var(--text-muted); border: 1px solid var(--border); }
 .btn:hover { transform: translateY(-2px); color: #fff; }
+
+/* ── PRINT / SAVE AS PDF ── */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    background: #fff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 297mm;
+    padding: 0;
+  }
+  .credential-container {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #fff !important;
+    color: #111 !important;
+    max-width: 420px;
+    margin: auto;
+    page-break-inside: avoid;
+  }
+  .action-buttons { display: none !important; }
+  .verified-header-badge { color: #047857 !important; border-color: #047857 !important; background: #d1fae5 !important; }
+  .profile-name { color: #0f172a !important; }
+  .profile-role { color: #2563eb !important; }
+  .profile-dept { color: #475569 !important; }
+  .dossier-grid { background: #f8fafc !important; border-color: #e2e8f0 !important; }
+  .dossier-label { color: #64748b !important; }
+  .dossier-val { color: #0f172a !important; }
+  .barcode-footer-box { color: #0f172a !important; }
+  .blood-pill { background: #fee2e2 !important; color: #b91c1c !important; border-color: #fca5a5 !important; }
+}
 </style>
 </head>
 <body>
