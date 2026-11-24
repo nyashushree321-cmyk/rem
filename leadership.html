@@ -7,8 +7,9 @@
 <meta name="description" content="Meet the Executive Leadership, Board of Governance, and Regional Chief Metallurgists driving REM's critical materials vision.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Libre+Barcode+39+Text&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
 :root {
   --bg-dark: #070d18;
@@ -33,6 +34,8 @@
   --radius-full: 9999px;
   --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  --gold-stripe: #c57b16;
+  --footer-navy: #0b1e38;
 }
 
 *, *::before, *::after {
@@ -309,7 +312,9 @@ section {
   color: var(--text-muted);
 }
 
-/* TEAM GRID */
+/* =========================================================
+   CLEAN & UNIFIED TEAM GRID (ALL INITIAL BADGES LIKE PATTERN 2)
+   ========================================================= */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -320,77 +325,49 @@ section {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 30px 22px;
+  padding: 38px 22px 34px;
   text-align: center;
   transition: var(--transition);
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .team-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(56, 189, 248, 0.4);
+  border-color: rgba(56, 189, 248, 0.45);
   background: var(--bg-card-hover);
-  box-shadow: var(--shadow-lg);
-}
-
-/* SPECIAL CARD FOR VERIFIED PERSONNEL */
-.team-card.featured-verified {
-  border: 1px solid rgba(56, 189, 248, 0.45);
-  box-shadow: 0 0 25px rgba(37, 99, 235, 0.2);
-  background: linear-gradient(180deg, #102142, #0d1a33);
-}
-
-.verified-pill {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: rgba(16, 185, 129, 0.15);
-  color: var(--emerald);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  padding: 3px 9px;
-  border-radius: var(--radius-full);
-  font-size: 10.5px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  text-transform: uppercase;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 99, 235, 0.2);
 }
 
 .avatar-circle {
   width: 95px;
   height: 95px;
   border-radius: 50%;
-  margin: 0 auto 16px;
+  margin: 0 auto 18px;
   display: grid;
   place-items: center;
   font-size: 26px;
   font-weight: 800;
   color: #fff;
-  background: linear-gradient(135deg, var(--primary), #0284c7);
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-  border: 3px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, #1e40af, #0284c7);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+  border: 3px solid rgba(56, 189, 248, 0.3);
   overflow: hidden;
+  transition: var(--transition);
 }
 
-.avatar-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.team-card:nth-child(even) .avatar-circle {
-  background: linear-gradient(135deg, var(--gold), #b45309);
-  box-shadow: 0 8px 25px rgba(217, 119, 6, 0.4);
+.team-card:hover .avatar-circle {
+  border-color: var(--primary-light);
+  transform: scale(1.05);
 }
 
 .team-card h3 {
-  font-size: 19px;
-  margin-bottom: 5px;
+  font-size: 19.5px;
+  margin-bottom: 6px;
+  color: #fff;
 }
 
 .team-role {
@@ -405,157 +382,367 @@ section {
   color: var(--text-muted);
 }
 
-/* CREDENTIAL DETAILS BADGE */
-.credential-box {
-  margin-top: 16px;
+/* =========================================================
+   POPUP MODAL: OFFICIAL ID CARDS (BLUE SEAL & CLEAN 1 SIGNATURE)
+   ========================================================= */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: #091326;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  max-width: 780px;
   width: 100%;
-  background: rgba(7, 13, 24, 0.65);
+  padding: 26px 22px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.25);
+  position: relative;
+  animation: fadeInDown 0.3s ease;
+  margin: auto;
+}
+
+.close-modal {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: rgba(255,255,255,0.08);
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  text-align: left;
-  font-size: 12.5px;
-}
-
-.credential-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.credential-row:last-child {
-  border-bottom: none;
-}
-
-.credential-label {
-  color: var(--text-dim);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 11px;
-}
-
-.credential-val {
-  color: #fff;
-  font-weight: 700;
-}
-
-.blood-badge {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-}
-
-/* QR TRIGGER BUTTON */
-.qr-preview-box {
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  background: rgba(15, 28, 53, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 20px;
   cursor: pointer;
+  display: grid;
+  place-items: center;
   transition: var(--transition);
 }
 
-.qr-preview-box:hover {
-  background: rgba(37, 99, 235, 0.15);
-  border-color: var(--primary-light);
-  transform: scale(1.02);
+.close-modal:hover {
+  color: #fff;
+  background: rgba(239,68,68,0.2);
+  border-color: #ef4444;
 }
 
-.qr-thumb {
-  width: 48px;
-  height: 48px;
+.modal-cards-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 18px 0 16px;
+}
+
+/* ID CARD CR80 RATIO */
+.id-card {
+  width: 310px;
+  height: 540px;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+  text-align: center;
+}
+
+/* FRONT */
+.front-header {
+  padding: 16px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.front-logo-img {
+  height: 52px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  display: block;
+}
+
+.stripe-gold {
+  width: 100%;
+  height: 8px;
+  background-color: var(--gold-stripe);
+}
+
+.front-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px 8px;
+}
+
+.photo-frame {
+  width: 124px;
+  height: 148px;
+  border: 3.5px solid #0f2747;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  background: #f1f5f9;
+  margin-bottom: 12px;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.emp-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f2747;
+  font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 2px;
+}
+
+.emp-role {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #b45309;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.emp-dept {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #0369a1;
+  margin-bottom: 6px;
+}
+
+.emp-id-num {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f2747;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+}
+
+.barcode-link-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.barcode-link-container:hover {
+  transform: scale(1.03);
+}
+
+.scannable-qr-box {
+  width: 44px;
+  height: 44px;
   background: #fff;
-  padding: 3px;
-  border-radius: 4px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.qr-thumb img {
+.scannable-qr-box img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.qr-text {
+.barcode-linear-strip {
+  font-family: 'Libre Barcode 39 Text', cursive, monospace;
+  font-size: 30px;
+  color: #0f2747;
+  line-height: 0.85;
+}
+
+.id-card-footer {
+  background: var(--footer-navy);
+  color: #ffffff;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+/* BACK CARD */
+.back-header {
+  padding: 16px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-body {
+  flex: 1;
+  padding: 22px 24px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   text-align: left;
 }
 
-.qr-text b {
-  font-size: 12.5px;
-  display: block;
-  color: #fff;
+.meta-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+  font-size: 13px;
 }
 
-.qr-text span {
-  font-size: 11px;
-  color: var(--primary-light);
+.meta-field .label {
+  font-weight: 800;
+  color: #0f2747;
+  width: 100px;
 }
 
-/* POPUP MODAL FOR SCANNING QR CODE */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
-  z-index: 999;
+.meta-field .line-val {
+  flex: 1;
+  border-bottom: 1px solid #475569;
+  font-weight: 700;
+  color: #0f2747;
+  padding-left: 8px;
+  padding-bottom: 2px;
+  font-size: 13px;
+}
+
+/* SIGNATURE & BLUE OFFICIAL SEAL BOX */
+.signature-section {
+  position: relative;
+  margin: 22px 0 12px;
+  text-align: center;
+  height: 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* OFFICIAL BLUE RUBBER STAMP SEAL */
+.stamp-seal {
+  position: absolute;
+  top: -12px;
+  right: 12px;
+  width: 78px;
+  height: 78px;
+  border: 1.8px dashed rgba(30, 64, 175, 0.85);
+  border-radius: 50%;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  color: #1e40af;
+  transform: rotate(-12deg);
+  opacity: 0.9;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1.5px rgba(30, 64, 175, 0.4);
 }
 
-.modal-content {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  max-width: 440px;
-  width: 100%;
-  padding: 32px 28px;
+.stamp-seal .seal-corp {
+  font-size: 6px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stamp-seal .seal-star {
+  font-size: 7px;
+  margin: 1px 0;
+}
+
+.stamp-seal .seal-status {
+  font-size: 6.5px;
+  font-weight: 800;
+  border-top: 1px solid #1e40af;
+  border-bottom: 1px solid #1e40af;
+  padding: 1px 3px;
+  letter-spacing: 0.06em;
+}
+
+/* SINGLE CLEAN INK SIGNATURE WITHOUT EXTRA OVERLAY STROKES */
+.single-signature-svg {
+  width: 155px;
+  height: 44px;
+  margin-bottom: -5px;
+  z-index: 2;
+  filter: drop-shadow(0 0 0.5px #1e3a8a);
+}
+
+.signature-line {
+  width: 180px;
+  height: 2px;
+  background-color: #0f2747;
+  margin-bottom: 4px;
+}
+
+.signature-caption {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.return-notice {
   text-align: center;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.2);
-  position: relative;
-  animation: fadeInDown 0.3s ease;
+  margin-top: 6px;
 }
 
-.close-modal {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 20px;
-  cursor: pointer;
+.return-notice h4 {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0f2747;
+  margin-bottom: 2px;
 }
 
-.close-modal:hover {
-  color: #fff;
+.return-notice p {
+  font-size: 9.5px;
+  line-height: 1.4;
+  color: #475569;
 }
 
-.qr-card-display {
-  background: #ffffff;
-  padding: 16px;
-  border-radius: var(--radius-md);
-  display: inline-block;
-  margin: 18px 0;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+.back-footer {
+  background: var(--footer-navy);
+  color: #ffffff;
+  padding: 8px 10px;
+  font-size: 10.5px;
+  font-weight: 600;
+  text-align: center;
 }
 
-.qr-card-display img {
-  width: 200px;
-  height: 200px;
-  display: block;
+/* CLOSE MODAL BUTTON */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 /* VISION & MISSION */
@@ -688,22 +875,16 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* RESPONSIVE DESIGN - PERFECT MOBILE NAVBAR & CARD ALIGNMENT */
+/* RESPONSIVE DESIGN */
 @media (max-width: 1080px) {
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .wrap {
-    padding: 0 16px;
-  }
+  .wrap { padding: 0 16px; }
+  .top-bar { display: none !important; }
 
-  .top-bar {
-    display: none !important;
-  }
-
-  /* NAVBAR ALIGNMENT: Logo on Left, Hamburger on Right */
   nav {
     min-height: 68px;
     display: flex;
@@ -711,32 +892,13 @@ footer {
     align-items: center;
   }
 
-  .brand {
-    gap: 10px;
-  }
+  .brand-logo-card { padding: 4px 8px; }
+  .brand-logo-card img { height: 34px; }
+  .brand-text b { font-size: 16px; }
+  .brand-text span { font-size: 9.5px; }
 
-  .brand-logo-card {
-    padding: 4px 8px;
-  }
+  .nav-links, .nav-cta { display: none !important; }
 
-  .brand-logo-card img {
-    height: 34px;
-  }
-
-  .brand-text b {
-    font-size: 16px;
-  }
-
-  .brand-text span {
-    font-size: 9.5px;
-  }
-
-  /* HIDE DESKTOP NAV LINKS & CTA BUTTON */
-  .nav-links, .nav-cta {
-    display: none !important;
-  }
-
-  /* PROPER STYLED HAMBURGER BUTTON */
   .mobile-toggle {
     display: flex !important;
     align-items: center;
@@ -747,61 +909,11 @@ footer {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--border-light);
     color: #fff;
-    cursor: pointer;
-    flex-shrink: 0;
   }
 
-  .page-hero {
-    padding: 45px 0 35px;
-  }
-
-  .page-hero h1 {
-    font-size: 28px;
-    line-height: 1.2;
-  }
-
-  .page-hero p {
-    font-size: 15px;
-    line-height: 1.55;
-  }
-
-  section {
-    padding: 55px 0;
-  }
-
-  .section-head {
-    margin-bottom: 35px;
-    text-align: center;
-  }
-
-  .section-head h2 {
-    font-size: 25px;
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr !important;
-    gap: 18px;
-  }
-
-  .vm-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .vm-card {
-    padding: 26px 20px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
+  .team-grid { grid-template-columns: 1fr !important; }
+  .vm-grid { grid-template-columns: 1fr; }
+  .modal-cards-wrap { flex-direction: column; }
 }
 </style>
 </head>
@@ -844,12 +956,10 @@ footer {
         <a href="leadership.html" class="active">Leadership & Experts</a>
       </div>
 
-      <!-- DESKTOP CTA BUTTON (HIDDEN ON MOBILE) -->
       <div class="nav-cta">
         <a href="index.html#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
       </div>
 
-      <!-- MOBILE HAMBURGER BUTTON -->
       <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle mobile menu">
         <i class="fa-solid fa-bars"></i>
       </button>
@@ -879,7 +989,7 @@ footer {
     </div>
   </section>
 
-  <!-- 1. BOARD OF GOVERNANCE (EXECUTIVE LEADERSHIP) -->
+  <!-- 1. BOARD OF GOVERNANCE -->
   <section id="governance" style="background: rgba(10, 19, 36, 0.4);">
     <div class="wrap">
       <div class="section-head">
@@ -891,43 +1001,33 @@ footer {
       <div class="team-grid">
         <div class="team-card">
           <div class="avatar-circle">MS</div>
-          <div class="team-info-wrap">
-            <h3>Mr. M. SuryaKiran</h3>
-            <div class="team-role">Honorable Chairman</div>
-            <div class="team-dept">Strategic Governance & Policy</div>
-          </div>
+          <h3>Mr. M. SuryaKiran</h3>
+          <div class="team-role">Honorable Chairman</div>
+          <div class="team-dept">Strategic Governance & Policy</div>
         </div>
         <div class="team-card">
           <div class="avatar-circle">PC</div>
-          <div class="team-info-wrap">
-            <h3>Mr. P. Chiranjeevi</h3>
-            <div class="team-role">CEO & Managing Director</div>
-            <div class="team-dept">Executive Operations & Expansion</div>
-          </div>
+          <h3>Mr. P. Chiranjeevi</h3>
+          <div class="team-role">CEO & Managing Director</div>
+          <div class="team-dept">Executive Operations & Expansion</div>
         </div>
         <div class="team-card">
           <div class="avatar-circle">VS</div>
-          <div class="team-info-wrap">
-            <h3>Mr. V. Swaminarayanan</h3>
-            <div class="team-role">General Manager</div>
-            <div class="team-dept">Corporate Affairs & Logistics</div>
-          </div>
+          <h3>Mr. V. Swaminarayanan</h3>
+          <div class="team-role">General Manager</div>
+          <div class="team-dept">Corporate Affairs & Logistics</div>
         </div>
         <div class="team-card">
           <div class="avatar-circle">MS</div>
-          <div class="team-info-wrap">
-            <h3>Mr. M. Subramanyam</h3>
-            <div class="team-role">Finance Manager</div>
-            <div class="team-dept">Treasury, Audit & Compliance</div>
-          </div>
+          <h3>Mr. M. Subramanyam</h3>
+          <div class="team-role">Finance Manager</div>
+          <div class="team-dept">Treasury, Audit & Compliance</div>
         </div>
         <div class="team-card">
           <div class="avatar-circle">MR</div>
-          <div class="team-info-wrap">
-            <h3>Mr. M. Ravikanth</h3>
-            <div class="team-role">Operations Manager</div>
-            <div class="team-dept">Field Metallurgy & Plant Execution</div>
-          </div>
+          <h3>Mr. M. Ravikanth</h3>
+          <div class="team-role">Operations Manager</div>
+          <div class="team-dept">Field Metallurgy & Plant Execution</div>
         </div>
       </div>
     </div>
@@ -943,199 +1043,47 @@ footer {
       </div>
 
       <div class="team-grid">
-        <!-- 1. MR. K. P. GANESH (SOUTH OPERATIONS - O+VE) -->
-        <div class="team-card featured-verified" id="ganesh">
-          <span class="verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
-          
-          <div class="avatar-circle" style="width:105px; height:105px; border:3px solid var(--primary-light);">
-            <img src="images/ganesh.jpg" alt="Mr. K. P. Ganesh" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='images/ganesh.jpeg';">
-          </div>
-
-          <div class="team-info-wrap">
-            <h3>Mr. K. P. Ganesh</h3>
-            <div class="team-role">Sr. Metallurgist</div>
-            <div class="team-dept">South Operations</div>
-          </div>
-
-          <!-- Credential Dossier Box -->
-          <div class="credential-box">
-            <div class="credential-row">
-              <span class="credential-label">Designation</span>
-              <span class="credential-val">Sr. Metallurgist</span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Jurisdiction</span>
-              <span class="credential-val">South Operations</span>
-            </div>
-            <div class="credential-row">
-              <!-- <span class="credential-label">Blood Group</span> -->
-              <!-- <span class="credential-val"><span class="blood-badge" style="color:#a7f3d0; background:rgba(16,185,129,0.15); border-color:rgba(16,185,129,0.3);">O+VE</span></span> -->
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Identity ID</span>
-              <span class="credential-val" style="color:var(--primary-light);">REM-MET-103</span>
-            </div>
-          </div>
-
-          <!-- Clickable Scannable QR Trigger -->
-          <div class="qr-preview-box" onclick="openPersonnelModal('ganesh')" title="Click to enlarge & scan QR">
-            <div class="qr-thumb">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=NAME%3A%20K.%20P.%20Ganesh%0ADESIGNATION%3A%20SR.%20METALLURGIST%0ADEPARTMENT%3A%20South%20Operations%0ABLOOD%20GROUP%3A%20O%2BVE%0AORGANISATION%3A%20REM%20%E2%80%93%20Rarest%20Earth%20Metals%0ASTATUS%3A%20Verified%20Active%20Personnel" alt="QR Code">
-            </div>
-            <div class="qr-text">
-              <b><i class="fa-solid fa-qrcode"></i> Digital Credential QR</b>
-              <span>Click / Scan to verify details</span>
-            </div>
-          </div>
+        
+        <!-- 1. MR. K. P. GANESH -->
+        <div class="team-card" onclick="openPersonnelModal('ganesh')" title="Click to view official ID card">
+          <div class="avatar-circle">KG</div>
+          <h3>Mr. K. P. Ganesh</h3>
+          <div class="team-role">Sr. Metallurgist</div>
+          <div class="team-dept">South Operations</div>
         </div>
 
-        <!-- 2. MR. B. G. KISHOR (NORTH OPERATIONS - B+VE) -->
-        <div class="team-card featured-verified" id="kishor">
-          <span class="verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
-          
-          <div class="avatar-circle" style="width:105px; height:105px; border:3px solid var(--primary-light);">
-            <img src="images/kishore.jpeg" alt="Mr. B. G. Kishor" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='images/kishor.jpg';">
-          </div>
-
-          <div class="team-info-wrap">
-            <h3>Mr. B. G. Kishor</h3>
-            <div class="team-role">Sr. Metallurgist</div>
-            <div class="team-dept">North Operations</div>
-          </div>
-
-          <!-- Credential Dossier Box -->
-          <div class="credential-box">
-            <div class="credential-row">
-              <span class="credential-label">Designation</span>
-              <span class="credential-val">Sr. Metallurgist</span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Jurisdiction</span>
-              <span class="credential-val">North Operations</span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Blood Group</span>
-              <span class="credential-val"><span class="blood-badge">B+VE</span></span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Identity ID</span>
-              <span class="credential-val" style="color:var(--primary-light);">REM-MET-104</span>
-            </div>
-          </div>
-
-          <!-- Clickable Scannable QR Trigger -->
-          <div class="qr-preview-box" onclick="openPersonnelModal('kishor')" title="Click to enlarge & scan QR">
-            <div class="qr-thumb">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=NAME%3A%20B.%20G.%20Kishor%0ADESIGNATION%3A%20SR.%20METALLURGIST%0ADEPARTMENT%3A%20North%20Operations%0ABLOOD%20GROUP%3A%20B%2BVE%0AORGANISATION%3A%20REM%20%E2%80%93%20Rarest%20Earth%20Metals%0ASTATUS%3A%20Verified%20Active%20Personnel" alt="QR Code">
-            </div>
-            <div class="qr-text">
-              <b><i class="fa-solid fa-qrcode"></i> Digital Credential QR</b>
-              <span>Click / Scan to verify details</span>
-            </div>
-          </div>
+        <!-- 2. MR. B. G. KISHOR -->
+        <div class="team-card" onclick="openPersonnelModal('kishor')" title="Click to view official ID card">
+          <div class="avatar-circle">BK</div>
+          <h3>Mr. B. G. Kishor</h3>
+          <div class="team-role">Sr. Metallurgist</div>
+          <div class="team-dept">North Operations</div>
         </div>
 
-        <!-- 3. MR. V. S. KUMAR (EAST OPERATIONS - B-VE) -->
-        <div class="team-card featured-verified" id="kumar">
-          <span class="verified-pill"><i class="fa-solid fa-circle-check"></i> Verified</span>
-          
-          <div class="avatar-circle" style="width:105px; height:105px; border:3px solid var(--primary-light);">
-            <img src="images/VSKumar.jpg" alt="Mr. V. S. Kumar" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='images/kumar.jpeg';">
-          </div>
-
-          <div class="team-info-wrap">
-            <h3>Mr. V. S. Kumar</h3>
-            <div class="team-role">Sr. Metallurgist</div>
-            <div class="team-dept">East Operations</div>
-          </div>
-
-          <!-- Credential Dossier Box -->
-          <div class="credential-box">
-            <div class="credential-row">
-              <span class="credential-label">Designation</span>
-              <span class="credential-val">Sr. Metallurgist</span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Jurisdiction</span>
-              <span class="credential-val">East Operations</span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Blood Group</span>
-              <span class="credential-val"><span class="blood-badge" style="color:#67e8f9; background:rgba(6,182,212,0.15); border-color:rgba(6,182,212,0.3);">B-VE</span></span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Identity ID</span>
-              <span class="credential-val" style="color:var(--primary-light);">REM-MET-105</span>
-            </div>
-          </div>
-
-          <!-- Clickable Scannable QR Trigger -->
-          <div class="qr-preview-box" onclick="openPersonnelModal('kumar')" title="Click to enlarge & scan QR">
-            <div class="qr-thumb">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=NAME%3A%20V.%20S.%20Kumar%0ADESIGNATION%3A%20SR.%20METALLURGIST%0ADEPARTMENT%3A%20East%20Operations%0ABLOOD%20GROUP%3A%20B-VE%0AORGANISATION%3A%20REM%20%E2%80%93%20Rarest%20Earth%20Metals%0ASTATUS%3A%20Verified%20Active%20Personnel" alt="QR Code">
-            </div>
-            <div class="qr-text">
-              <b><i class="fa-solid fa-qrcode"></i> Digital Credential QR</b>
-              <span>Click / Scan to verify details</span>
-            </div>
-          </div>
+        <!-- 3. MR. V. S. KUMAR -->
+        <div class="team-card" onclick="openPersonnelModal('kumar')" title="Click to view official ID card">
+          <div class="avatar-circle">VK</div>
+          <h3>Mr. V. S. Kumar</h3>
+          <div class="team-role">Sr. Metallurgist</div>
+          <div class="team-dept">East Operations</div>
         </div>
 
-        <!-- 4. MR. MD. GHOUSE (COORDINATOR - O-VE) -->
-        <div class="team-card featured-verified" id="ghouse" style="border-color: rgba(192, 132, 252, 0.45); box-shadow: 0 0 25px rgba(168, 85, 247, 0.2);">
-          <span class="verified-pill" style="background: rgba(168, 85, 247, 0.15); color: var(--purple-light); border-color: rgba(168, 85, 247, 0.35);"><i class="fa-solid fa-star"></i> Coordinator</span>
-          
-          <div class="avatar-circle" style="width:105px; height:105px; border:3px solid var(--purple-light);">
-            <img src="images/Ghouse.jpeg" alt="Mr. MD. Ghouse" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='images/ghouse.jpeg';">
-          </div>
-
-          <div class="team-info-wrap">
-            <h3>Mr. MD. Ghouse</h3>
-            <div class="team-role" style="color: var(--purple-light);">Coordinator</div>
-            <div class="team-dept">Central Operations & Liaison</div>
-          </div>
-
-          <!-- Credential Dossier Box -->
-          <div class="credential-box">
-            <div class="credential-row">
-              <span class="credential-label">Designation</span>
-              <span class="credential-val" style="color: var(--purple-light);">Coordinator</span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Jurisdiction</span>
-              <span class="credential-val">Central Operations</span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Blood Group</span>
-              <span class="credential-val"><span class="blood-badge" style="color:#e9d5ff; background:rgba(168,85,247,0.18); border-color:rgba(168,85,247,0.4);">O-VE</span></span>
-            </div>
-            <div class="credential-row">
-              <span class="credential-label">Identity ID</span>
-              <span class="credential-val" style="color:var(--purple-light);">REM-CRD-101</span>
-            </div>
-          </div>
-
-          <!-- Clickable Scannable QR Trigger -->
-          <div class="qr-preview-box" onclick="openPersonnelModal('ghouse')" title="Click to enlarge & scan QR">
-            <div class="qr-thumb">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=NAME%3A%20MD.%20Ghouse%0ADESIGNATION%3A%20COORDINATOR%0ADEPARTMENT%3A%20Central%20Operations%0ABLOOD%20GROUP%3A%20O-VE%0AORGANISATION%3A%20REM%20%E2%80%93%20Rarest%20Earth%20Metals%0ASTATUS%3A%20Verified%20Active%20Personnel" alt="QR Code">
-            </div>
-            <div class="qr-text">
-              <b><i class="fa-solid fa-qrcode"></i> Digital Credential QR</b>
-              <span>Click / Scan to verify details</span>
-            </div>
-          </div>
+        <!-- 4. MR. MD. GHOUSE -->
+        <div class="team-card" onclick="openPersonnelModal('ghouse')" title="Click to view official ID card">
+          <div class="avatar-circle">MG</div>
+          <h3>Mr. MD. Ghouse</h3>
+          <div class="team-role">Coordinator</div>
+          <div class="team-dept">Central Operations & Liaison</div>
         </div>
 
-        <!-- 5. Mr. Mukesh Patro -->
-        <div class="team-card">
+        <!-- 5. MR. MUKESH PATRO -->
+        <div class="team-card" onclick="openPersonnelModal('patro')" title="Click to view official ID card">
           <div class="avatar-circle">MP</div>
-          <div class="team-info-wrap">
-            <h3>Mr. Mukesh Patro</h3>
-            <div class="team-role">Sr. Metallurgist</div>
-            <div class="team-dept">West Operations</div>
-          </div>
+          <h3>Mr. Mukesh Patro</h3>
+          <div class="team-role">Sr. Metallurgist</div>
+          <div class="team-dept">West Operations</div>
         </div>
+
       </div>
     </div>
   </section>
@@ -1178,27 +1126,111 @@ footer {
   </section>
 </main>
 
-<!-- UNIVERSAL POPUP MODAL FOR HIGH-RES QR SCAN -->
-<div class="modal-overlay" id="qrModal" onclick="closeQrModal(event)">
+<!-- ===================================================================
+     HIGH-TECH MODAL: OFFICIAL ID CARD (BLUE SEAL & 1 SIGNATURE)
+     =================================================================== -->
+<div class="modal-overlay" id="personnelModal" onclick="closePersonnelModal(event)">
   <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="close-modal" onclick="closeQrModal()">&times;</button>
-    <span class="section-tag" style="margin-bottom:8px;"><i class="fa-solid fa-shield-halved"></i> Verified Personnel</span>
-    <h3 id="modalName" style="font-size:22px; margin-bottom:4px;">Mr. MD. Ghouse</h3>
-    <p id="modalRole" style="font-size:13.5px; color:var(--primary-light); font-weight:600;">Coordinator</p>
+    <button class="close-modal" onclick="closePersonnelModal()">&times;</button>
     
-    <div class="qr-card-display">
-      <img id="modalQrImg" src="" alt="Verified QR Code">
+    <span class="section-tag" style="margin-bottom:6px;"><i class="fa-solid fa-id-badge"></i> Official Personnel ID Card</span>
+    <h3 id="modalHeading" style="font-size:22px;">Mr. B. G. Kishor</h3>
+    <p style="font-size:13px; color:var(--text-muted); margin-bottom: 4px;">Front & Back Official Credential</p>
+
+    <!-- FRONT AND BACK SIDE BY SIDE -->
+    <div class="modal-cards-wrap">
+      
+      <!-- FRONT CARD -->
+      <div class="id-card" id="cardFront">
+        <div class="front-header">
+          <img src="images/image.png" alt="REM Logo" class="front-logo-img">
+        </div>
+
+        <div class="stripe-gold"></div>
+
+        <div class="front-body">
+          <div class="photo-frame">
+            <img id="cardPhoto" src="images/kishore.jpeg" alt="Personnel Photo" onerror="this.src='images/kishor.jpg';">
+          </div>
+
+          <h3 class="emp-name" id="cardName">Mr. B. G. Kishor</h3>
+          <div class="emp-role" id="cardRole">SR. METALLURGIST</div>
+          <div class="emp-dept" id="cardDept">North India Operations</div>
+          <div class="emp-id-num" id="cardId">ID No: REM-004</div>
+
+          <!-- DIRECT LINK ON QR & BARCODE TO THIS PERSON'S HTML PAGE -->
+          <a id="barcodeDirectLink" href="kishor.html" class="barcode-link-container" title="Click or Scan to open profile">
+            <div class="scannable-qr-box">
+              <img id="scannableQrImg" src="" alt="QR Code">
+            </div>
+            <div class="barcode-linear-strip" id="cardLinearBarcode">*REM-004*</div>
+          </a>
+        </div>
+
+        <div class="id-card-footer">
+          info@rarestearthmetals.in
+        </div>
+      </div>
+
+      <!-- BACK CARD -->
+      <div class="id-card" id="cardBack">
+        <div class="back-header">
+          <img src="images/image.png" alt="REM Logo" class="front-logo-img">
+        </div>
+
+        <div class="stripe-gold"></div>
+
+        <div class="back-body">
+          <div class="meta-field">
+            <span class="label">Blood group:</span>
+            <span class="line-val" id="cardBlood">B+VE</span>
+          </div>
+
+          <div class="meta-field">
+            <span class="label">Valid until:</span>
+            <span class="line-val">31-DEC-2029</span>
+          </div>
+
+          <!-- SIGNATURE + OFFICIAL BLUE SEAL STAMP -->
+          <div class="signature-section">
+            <div class="stamp-seal">
+              <span class="seal-corp">RAREST EARTH METALS</span>
+              <span class="seal-star">★ ★ ★</span>
+              <span class="seal-status">AUTHORIZED</span>
+              <span class="seal-corp" style="font-size:5.5px; margin-top:1px;">SEC-PATIALA</span>
+            </div>
+
+            <!-- SINGLE INK SIGNATURE WITHOUT EXTRA OVERLAY LINES -->
+            <svg class="single-signature-svg" viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 34C24 26 36 12 44 16C50 19 32 38 42 37C56 35 62 18 70 18C78 17 80 30 92 27C102 24 110 14 120 15C128 16 132 32 146 22C151 18 154 20 152 24" stroke="#172554" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <div class="signature-line"></div>
+            <div class="signature-caption">Authorised Signature</div>
+          </div>
+
+          <div class="return-notice">
+            <h4>If found, please return to:</h4>
+            <p>
+              Rarest Earth Metals, Industrial Estate, 9C98+GF8,<br>
+              Lakhewal, Patiala, Punjab 147004
+            </p>
+          </div>
+        </div>
+
+        <div class="back-footer">
+          This card is company property.
+        </div>
+      </div>
+
     </div>
 
-    <div style="background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px; font-size:13px; text-align:left; color:var(--text-muted); line-height:1.6;">
-      <div><strong style="color:#fff;">Designation:</strong> <span id="modalDesignation">COORDINATOR</span></div>
-      <div><strong style="color:#fff;">Blood Group:</strong> <span id="modalBlood" class="blood-badge">O-VE</span></div>
-      <div><strong style="color:#fff;">Organisation:</strong> REM – Rarest Earth Metals</div>
+    <!-- CLOSE BUTTON ONLY -->
+    <div class="modal-actions">
+      <button class="btn btn-primary" style="padding: 9px 32px;" onclick="closePersonnelModal()">
+        Close
+      </button>
     </div>
-    
-    <p style="font-size:11.5px; color:var(--text-dim); margin-top:14px;">
-      <i class="fa-solid fa-camera"></i> Point your mobile camera at this QR code to view the live verified credentials.
-    </p>
   </div>
 </div>
 
@@ -1263,53 +1295,106 @@ function toggleMenu() {
   m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
 }
 
-// Data Store for Modal details
-const personnelData = {
+const personnelDB = {
   ganesh: {
     name: "Mr. K. P. Ganesh",
-    designation: "SR. METALLURGIST",
-    role: "Sr. Metallurgist – South Operations",
+    role: "SR. METALLURGIST",
+    dept: "South India Operations",
+    id: "REM-006",
+    // In your images folder you have ganesh.jpeg
+    photo: "images/ganesh.jpeg",
+    fallbackPhoto: "images/ganesh.jpg",
     blood: "O+VE",
-    qr: "https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=10&data=NAME%3A%20K.%20P.%20Ganesh%0ADESIGNATION%3A%20SR.%20METALLURGIST%0ADEPARTMENT%3A%20South%20Operations%0ABLOOD%20GROUP%3A%20O%2BVE%0AORGANISATION%3A%20REM%20%E2%80%93%20Rarest%20Earth%20Metals%0ASTATUS%3A%20Verified%20Active%20Personnel"
+    profileUrl: "ganesh.html"
   },
   kishor: {
     name: "Mr. B. G. Kishor",
-    designation: "SR. METALLURGIST",
-    role: "Sr. Metallurgist – North Operations",
+    role: "SR. METALLURGIST",
+    dept: "North India Operations",
+    id: "REM-004",
+    photo: "images/kishore.jpeg",
+    fallbackPhoto: "images/kishor.jpg",
     blood: "B+VE",
-    qr: "https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=10&data=NAME%3A%20B.%20G.%20Kishor%0ADESIGNATION%3A%20SR.%20METALLURGIST%0ADEPARTMENT%3A%20North%20Operations%0ABLOOD%20GROUP%3A%20B%2BVE%0AORGANISATION%3A%20REM%20%E2%80%93%20Rarest%20Earth%20Metals%0ASTATUS%3A%20Verified%20Active%20Personnel"
+    profileUrl: "kishor.html"
   },
   kumar: {
     name: "Mr. V. S. Kumar",
-    designation: "SR. METALLURGIST",
-    role: "Sr. Metallurgist – East Operations",
+    role: "SR. METALLURGIST",
+    dept: "East India Operations",
+    id: "REM-005",
+    photo: "images/VSKumar.jpg",
+    fallbackPhoto: "images/kumar.jpeg",
     blood: "B-VE",
-    qr: "https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=10&data=NAME%3A%20V.%20S.%20Kumar%0ADESIGNATION%3A%20SR.%20METALLURGIST%0ADEPARTMENT%3A%20East%20Operations%0ABLOOD%20GROUP%3A%20B-VE%0AORGANISATION%3A%20REM%20%E2%80%93%20Rarest%20Earth%20Metals%0ASTATUS%3A%20Verified%20Active%20Personnel"
+    profileUrl: "kumar.html"
   },
   ghouse: {
     name: "Mr. MD. Ghouse",
-    designation: "COORDINATOR",
-    role: "Coordinator – Central Operations",
+    role: "COORDINATOR",
+    dept: "Central India Operations",
+    id: "REM-001",
+    photo: "images/Ghouse.jpeg",
+    fallbackPhoto: "images/ghouse.jpeg",
     blood: "O-VE",
-    qr: "https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=10&data=NAME%3A%20MD.%20Ghouse%0ADESIGNATION%3A%20COORDINATOR%0ADEPARTMENT%3A%20Central%20Operations%0ABLOOD%20GROUP%3A%20O-VE%0AORGANISATION%3A%20REM%20%E2%80%93%20Rarest%20Earth%20Metals%0ASTATUS%3A%20Verified%20Active%20Personnel"
+    profileUrl: "ghouse.html"
+  },
+  patro: {
+    name: "Mr. Mukesh Patro",
+    role: "SR. METALLURGIST",
+    dept: "West India Operations",
+    id: "REM-007",
+    photo: "images/image.png",
+    fallbackPhoto: "images/image.png",
+    blood: "A+VE",
+    profileUrl: "patro.html"
   }
 };
 
 function openPersonnelModal(key) {
-  const data = personnelData[key];
-  if (!data) return;
+  const p = personnelDB[key];
+  if (!p) return;
 
-  document.getElementById('modalName').innerText = data.name;
-  document.getElementById('modalDesignation').innerText = data.designation;
-  document.getElementById('modalRole').innerText = data.role;
-  document.getElementById('modalBlood').innerText = data.blood;
-  document.getElementById('modalQrImg').src = data.qr;
-  document.getElementById('qrModal').style.display = 'flex';
+  document.getElementById('modalHeading').innerText = p.name;
+  document.getElementById('cardName').innerText = p.name;
+  document.getElementById('cardRole').innerText = p.role;
+  document.getElementById('cardDept').innerText = p.dept;
+  document.getElementById('cardId').innerText = "ID No: " + p.id;
+  document.getElementById('cardBlood').innerText = p.blood;
+  document.getElementById('cardLinearBarcode').innerText = `*${p.id}*`;
+
+  // 1. Direct link for clicking on laptop
+  const linkEl = document.getElementById('barcodeDirectLink');
+  linkEl.href = p.profileUrl;
+
+  // 2. DETECT EXACT LIVE HOST:
+  // If you are on Netlify (e.g. rarestearthmetals.netlify.app or rarestearthmetals.in)
+  // it uses that exact domain so it NEVER gives 404!
+  let baseUrl = window.location.origin;
+  
+  // If testing locally on 127.0.0.1, set to your live Netlify or public domain:
+  if (baseUrl.includes('127.0.0.1') || baseUrl.includes('localhost')) {
+    // Put your exact live domain here:
+    baseUrl = "https://rarestearthmetals.in"; 
+  }
+
+  const liveTargetUrl = `${baseUrl}/${p.profileUrl}`;
+
+  // Generate QR code pointing to that exact live page
+  document.getElementById('scannableQrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=0&data=${encodeURIComponent(liveTargetUrl)}`;
+
+  const imgEl = document.getElementById('cardPhoto');
+  imgEl.onerror = function() {
+    this.onerror = null;
+    this.src = p.fallbackPhoto;
+  };
+  imgEl.src = p.photo;
+
+  document.getElementById('personnelModal').style.display = 'flex';
 }
-
-function closeQrModal(e) {
-  document.getElementById('qrModal').style.display = 'none';
+function closePersonnelModal(e) {
+  if (e && e.target && e.target.classList.contains('modal-content')) return;
+  document.getElementById('personnelModal').style.display = 'none';
 }
 </script>
+
 </body>
 </html>
